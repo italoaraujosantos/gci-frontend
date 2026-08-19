@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestor de Carteira</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container header-content">
+
+        <div>
+            <h1>Gestor de Carteira</h1>
+            <p>Controle seus investimentos</p>
+        </div>
+
+        <button id="btnNovoAtivo" class="btn btn-primary">
+            + Novo ativo
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- Dashboard -->
+
+    <section class="dashboard">
+
+        <div class="card">
+
+            <span class="card-title">
+                Total investido
+            </span>
+
+            <strong id="totalInvestido">
+                R$ 0,00
+            </strong>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="card-title">
+                Valor atual
+            </span>
+
+            <strong id="valorAtual">
+                R$ 0,00
+            </strong>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="card-title">
+                Resultado
+            </span>
+
+            <strong id="resultado">
+                R$ 0,00
+            </strong>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="card-title">
+                Ativos
+            </span>
+
+            <strong id="quantidadeAtivos">
+                0
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- Carteira -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div>
+                <h2>Minha carteira</h2>
+                <p>Ativos cadastrados</p>
+            </div>
+
+            <button
+                id="btnAtualizar"
+                class="btn btn-secondary">
+                Atualizar cotações
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>Ativo</th>
+                    <th>Quantidade</th>
+                    <th>Preço médio</th>
+                    <th>Cotação</th>
+                    <th>Investido</th>
+                    <th>Atual</th>
+                    <th>Resultado</th>
+                    <th>Ações</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="carteiraBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- Modal -->
+
+<div id="modal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Novo ativo
+            </h2>
+
+            <button
+                id="btnFecharModal"
+                class="btn-close">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="ativoForm">
+
+            <input
+                type="hidden"
+                id="ativoId">
+
+
+            <div class="form-group">
+
+                <label for="ticker">
+                    Ticker
+                </label>
+
+                <input
+                    type="text"
+                    id="ticker"
+                    placeholder="Ex: PETR4"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+            <label for="nome">
+                Nome do ativo
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Ex: Petrobras"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="quantidade">
+                    Quantidade
+                </label>
+
+                <input
+                    type="number"
+                    id="quantidade"
+                    min="1"
+                    step="1"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="precoCompra">
+                    Preço de compra
+                </label>
+
+                <input
+                    type="number"
+                    id="precoCompra"
+                    min="0"
+                    step="0.01"
+                    required>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    id="btnCancelar"
+                    class="btn btn-secondary">
+                    Cancelar
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+                    Salvar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<div id="notification"
+     class="notification hidden">
+</div>
+
+
+
+<script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>
