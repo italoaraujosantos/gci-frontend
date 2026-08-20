@@ -1,50 +1,30 @@
 function calcularInvestido(ativo) {
-
-    return ativo.quantidade *
-           ativo.precoCompra;
+    return Number(ativo.quantidade || 0) * Number(ativo.precoCompra || 0);
 }
-
 
 function calcularAtual(ativo) {
-
-    return ativo.quantidade *
-           (ativo.cotacaoAtual || ativo.precoCompra);
+    const preco = ativo.precoAtual ?? ativo.precoCompra ?? 0;
+    return Number(ativo.quantidade || 0) * Number(preco);
 }
-
 
 function calcularResultado(ativo) {
-
-    return calcularAtual(ativo) -
-           calcularInvestido(ativo);
+    return calcularAtual(ativo) - calcularInvestido(ativo);
 }
 
-
 function calcularTotais(ativos) {
+    const totalInvestido = ativos.reduce(
+        (total, ativo) => total + calcularInvestido(ativo), 0
+    );
 
-    let totalInvestido = 0;
-    let valorAtual = 0;
-
-    ativos.forEach(ativo => {
-
-        totalInvestido +=
-            calcularInvestido(ativo);
-
-        valorAtual +=
-            calcularAtual(ativo);
-
-    });
+    const valorAtual = ativos.reduce(
+        (total, ativo) => total + calcularAtual(ativo), 0
+    );
 
     return {
-
         totalInvestido,
-
         valorAtual,
-
-        resultado:
-            valorAtual - totalInvestido,
-
-        quantidadeAtivos:
-            ativos.length
+        resultado: valorAtual - totalInvestido,
+        quantidadeAtivos: ativos.length
     };
 }
 
